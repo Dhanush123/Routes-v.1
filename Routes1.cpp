@@ -1,3 +1,5 @@
+// Programmer: Dhanush Patel
+// Programmer's ID: 1553428
 
 #include <iostream>
 #include <string>
@@ -6,10 +8,10 @@ using namespace std;
 class Leg{
   const char* const startCity;
   const char* const endCity;
-  int dist;
+  const int dist;
 
 public:
-  Leg(string s, string e, int d) : startCity(s.c_str()), endCity(e.c_str()), dist(d){}
+  Leg(const char* const s, const char* const e, int d) : startCity(s), endCity(e), dist(d){}
   int getDist() const {return dist;}
   Leg& operator=(const Leg&);
   void niceOutput(ostream&) const;
@@ -35,6 +37,10 @@ int main(){
     }
   }
 
+  cout << "Programmer: Dhanush Patel\n";
+  cout << "Programmer's ID: 1553428\n";
+  cout << "File: " << __FILE__ << "\n\n";
+
   for(auto& i : ary){
     i.niceOutput(cout);
   }
@@ -46,7 +52,7 @@ Leg& Leg::operator=(const Leg& copyThis){
   if(this != &copyThis){
     const_cast<const char*&>(host.startCity) = copyThis.startCity;
     const_cast<const char*&>(host.endCity) = copyThis.endCity;
-    host.dist = copyThis.dist;
+    const_cast<int&>(host.dist) = copyThis.dist;
   }
   return host;
 }
